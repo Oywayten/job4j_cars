@@ -16,7 +16,7 @@ public class UserUsage {
             var userRepository = new UserRepository(sf);
             var user = new User();
             user.setLogin("admin");
-            /*user.setPassword("admin");
+            user.setPassword("admin");
             userRepository.create(user);
             userRepository.findAllOrderById()
                     .forEach(System.out::println);
@@ -32,7 +32,7 @@ public class UserUsage {
                     .ifPresent(System.out::println);
             userRepository.delete(user.getId());
             userRepository.findAllOrderById()
-                    .forEach(System.out::println);*/
+                    .forEach(System.out::println);
         } finally {
             StandardServiceRegistryBuilder.destroy(registry);
         }

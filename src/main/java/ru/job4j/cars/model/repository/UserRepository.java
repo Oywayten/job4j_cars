@@ -82,14 +82,13 @@ public class UserRepository {
         List<User> list = List.of();
         try {
             session.beginTransaction();
-            list = session.createQuery("from ru.job4j.cars.model.User", User.class).list();
+            list = session.createQuery("from User as u order by u.id", User.class).list();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
             session.close();
         }
-        list.sort(Comparator.comparingInt(User::getId));
         return list;
     }
 
@@ -125,7 +124,7 @@ public class UserRepository {
         try {
             session.beginTransaction();
             final Query<User> query = session.createQuery("from User as u where u.login like :fkey", User.class)
-                    .setParameter("jkey", key);
+                    .setParameter("fkey", key);
             list = query.getResultList();
             session.getTransaction().commit();
         } catch (Exception e) {
