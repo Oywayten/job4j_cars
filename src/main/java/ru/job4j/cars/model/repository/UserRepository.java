@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import ru.job4j.cars.model.User;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +21,11 @@ public class UserRepository {
      */
     public User create(User user) {
         final Session session = sf.openSession();
+        int id = 0;
         try {
             session.beginTransaction();
-            session.save(user);
+            id = (Integer) session.save(user);
+            user.setId(id);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -102,7 +103,9 @@ public class UserRepository {
         Optional<User> optional = Optional.empty();
         try {
             session.beginTransaction();
-            optional = Optional.of(session.get(User.class, id));
+            optional = session.createQuery("from User as u where u.id = :fId", User.class)
+                    .setParameter("fId", id)
+                    .uniqueResultOptional();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -123,8 +126,8 @@ public class UserRepository {
         List<User> list = List.of();
         try {
             session.beginTransaction();
-            final Query<User> query = session.createQuery("from User as u where u.login like :fkey", User.class)
-                    .setParameter("fkey", key);
+            final Query<User> query = session.createQuery("from User as u where u.login like :fKey", User.class)
+                    .setParameter("fKey", key);
             list = query.getResultList();
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -147,7 +150,9 @@ public class UserRepository {
         Optional<User> optional = Optional.empty();
         try {
             session.beginTransaction();
-            optional = Optional.of(session.get(User.class, login));
+            optional = session.createQuery("from User as u where u.login = :fLogin", User.class)
+                    .setParameter("fLogin", login)
+                    .uniqueResultOptional();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
