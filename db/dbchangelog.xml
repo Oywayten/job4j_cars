@@ -2,12 +2,10 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <include file="scripts/001_ddl_create_entities_tables.sql" relativeToChangelogFile="true"/>
     <include file="scripts/002_dml_insert_users_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/003_ddl_alter_auto_post_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_ddl_create_price_history_tables.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
