@@ -1,0 +1,1 @@
+ALTER TABLE auto_post ADD car_id INT DEFAULT 1 NOT NULL REFERENCES car(id);

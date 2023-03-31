@@ -6,7 +6,12 @@
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <include file="scripts/001_ddl_create_entities_tables.sql" relativeToChangelogFile="true"/>
     <include file="scripts/002_dml_insert_users_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/003_ddl_alter_auto_post_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/004_ddl_create_price_history_tables.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/003_ddl_create_price_history_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_ddl_alter_table_price_history.sql" relativeToChangelogFile="true"/>
     <include file="scripts/005_ddl_create_participates_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_ddl_create_tables_engine_car.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/007_ddl_create_table_owner_and_history_owner.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/008_dml_populate_tables_engine_owner_car.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/009_ddl_alter_table_auto_post_column_car.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/010_dml_populate_table_history_owner.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
