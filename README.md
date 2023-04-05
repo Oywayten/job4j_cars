@@ -1,10 +1,10 @@
-## Веб-портал по продаже и покупке автомобилей. 
+## Web application for the sale and purchase of cars.
 
-### О проекте:
-+ На сайте размещены объявления с описанием, маркой машины, типом кузова, фотографией. 
-+ У объявления есть статус - продано или нет. 
+### About the application
++ The site contains ads with a description, brand of car, body type, photo. 
++ The ad has a status - sold or not. 
 
-### Использованные технологии
+### Technology stack:
 ```text
 + Java 17;
 + Maven 4.0;
@@ -20,5 +20,6 @@
 + Mockito 4. 
 ```
 
-### Контакты
-email: [cpc1251@mail.ru](mailto:cpc1251@mail.ru)
+### Contacts
++ email: [oywayten+git@gmail.com](mailto:oywayten+git@gmail.com)
++ telegram: [@VitaliyJVM](https://t.me/VitaliyJVM/ "go to t.me/VitaliyJVM")
