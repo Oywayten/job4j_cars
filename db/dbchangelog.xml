@@ -14,4 +14,6 @@
     <include file="scripts/008_dml_populate_tables_engine_owner_car.sql" relativeToChangelogFile="true"/>
     <include file="scripts/009_ddl_alter_table_auto_post_column_car.sql" relativeToChangelogFile="true"/>
     <include file="scripts/010_dml_populate_table_history_owner.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/011_ddl_alter_table_auto_post_column_photo.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/012_dml_populate_table_auto_post.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

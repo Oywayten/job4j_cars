@@ -15,6 +15,6 @@ values ('Porsche 911', 4),
        ('Audi A2', 2),
        ('Audi A3', 3),
        ('Audi A6', 4),
-       ('Mazda C1', 2),
-       ('Mazda C3', 3),
+       ('Mazda CX5', 2),
+       ('Mazda CX3', 3),
        ('BMW X8', 4);
