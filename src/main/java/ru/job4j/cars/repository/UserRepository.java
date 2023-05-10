@@ -49,7 +49,7 @@ public class UserRepository {
      *
      * @return список пользователей.
      */
-    public List<User> findAllOrderById() {
+    public List<User> findAllOrderedById() {
         return crudRepository.query("from User as u order by u.id asc", User.class);
     }
 

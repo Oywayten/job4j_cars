@@ -20,7 +20,7 @@ public class UserUsage {
             user.setLogin("admin");
             user.setPassword("admin");
             userRepository.create(user);
-            userRepository.findAllOrderById()
+            userRepository.findAllOrderedById()
                     .forEach(System.out::println);
             userRepository.findByLikeLogin("e")
                     .forEach(System.out::println);
@@ -33,7 +33,7 @@ public class UserUsage {
             userRepository.findById(user.getId())
                     .ifPresent(System.out::println);
             userRepository.delete(user.getId());
-            userRepository.findAllOrderById()
+            userRepository.findAllOrderedById()
                     .forEach(System.out::println);
         } finally {
             StandardServiceRegistryBuilder.destroy(registry);
