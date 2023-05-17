@@ -16,4 +16,13 @@
     <include file="scripts/010_dml_populate_table_history_owner.sql" relativeToChangelogFile="true"/>
     <include file="scripts/011_ddl_alter_table_auto_post_column_photo.sql" relativeToChangelogFile="true"/>
     <include file="scripts/012_dml_populate_table_auto_post.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/013_ddl_create_tables_category_brand_model_body_type.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/014_dml_populate_tables_category_brand_model_body_type.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/015_dml_update_table_engine.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/016_ddl_alter_table_car_add_columns.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/017_ddl_alter_table_post_add_column_sold.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/018_ddl_alter_table_auto_user_add_user_zone.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/019_ddl_create_table_post_photo.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/020_ddl_alter_table_auto_post_add_column_post_photo_id.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/021_ddl_alter_table_auto_post_drop_column_photo.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

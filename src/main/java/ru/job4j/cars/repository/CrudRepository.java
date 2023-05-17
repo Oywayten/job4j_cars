@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,15 +29,15 @@ public class CrudRepository {
         });
     }
 
-    public void run(String query, Map<String, Object> args) {
-        Consumer<Session> command = session -> {
+    public Integer run(String query, Map<String, Object> args) {
+        Function<Session, Integer> command = session -> {
             var sq = session.createQuery(query);
             for (Map.Entry<String, Object> arg : args.entrySet()) {
                 sq.setParameter(arg.getKey(), arg.getValue());
             }
-            sq.executeUpdate();
+            return sq.executeUpdate();
         };
-        run(command);
+        return tx(command);
     }
 
     public <T> Optional<T> optional(String query, Class<T> cl, Map<String, Object> args) {
@@ -51,17 +52,20 @@ public class CrudRepository {
     }
 
     public <T> List<T> query(String query, Class<T> cl) {
-        Function<Session, List<T>> command = session -> session.createQuery(query, cl).list();
+        Function<Session, List<T>> command = session -> {
+            Query<T> sessionQuery = session.createQuery(query, cl);
+            return sessionQuery.list();
+        };
         return tx(command);
     }
 
     public <T> List<T> query(String query, Class<T> cl, Map<String, Object> args) {
         Function<Session, List<T>> command = session -> {
-            var sq = session.createQuery(query, cl);
+            var sessionQuery = session.createQuery(query, cl);
             for (Map.Entry<String, Object> arg : args.entrySet()) {
-                sq.setParameter(arg.getKey(), arg.getValue());
+                sessionQuery.setParameter(arg.getKey(), arg.getValue());
             }
-            return sq.list();
+            return sessionQuery.list();
         };
         return tx(command);
     }

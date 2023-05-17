@@ -6,14 +6,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "AUTO_USER")
+@Table(name = "AUTO_USER", uniqueConstraints = {@UniqueConstraint(columnNames = "login")})
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true)
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 
-    @EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -27,4 +27,8 @@ public class User {
     @NonNull
     @Column(nullable = false)
     private String password;
+
+    @NotBlank
+    @Column(name = "user_zone", nullable = false)
+    private String timezone;
 }

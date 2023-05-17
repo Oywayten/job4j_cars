@@ -1,10 +1,10 @@
-create table engine (
-    id   serial primary key,
-    name TEXT not null
+CREATE TABLE engine (
+    id   SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
 );
 
-create table car (
-    id        serial primary key,
-    name      TEXT not null,
-    engine_id int  not null references engine (id)
+CREATE TABLE car (
+    id        SERIAL PRIMARY KEY,
+    name      TEXT NOT NULL,
+    engine_id INT  NOT NULL REFERENCES engine (id)
 );

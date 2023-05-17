@@ -1,15 +1,7 @@
 package ru.job4j.cars.repository;
 
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
-
 /**
- * Oywayten 31.03.2023.
+ * Oywayten 17.05.2023.
  */
-@Repository
-@AllArgsConstructor
-public class OwnerRepository {
-
-    private final CrudRepository crudRepository;
-
+public interface OwnerRepository {
 }

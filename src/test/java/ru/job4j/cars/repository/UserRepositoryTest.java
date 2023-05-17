@@ -20,7 +20,7 @@ class UserRepositoryTest {
     private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder().configure().build();
     private static final SessionFactory SESSION_FACTORY = new MetadataSources(REGISTRY).buildMetadata().buildSessionFactory();
     private static final CrudRepository CRUD_REPOSITORY = new CrudRepository(SESSION_FACTORY);
-    private static final UserRepository USER_REPOSITORY = new UserRepository(CRUD_REPOSITORY);
+    private static final UserRepository USER_REPOSITORY = new HybernateUserRepository(CRUD_REPOSITORY);
 
     @AfterAll
     public static void getRegistryAndSessionFactory() {
@@ -37,7 +37,7 @@ class UserRepositoryTest {
         User user = new User();
         user.setLogin("user");
         user.setPassword("password");
-        USER_REPOSITORY.create(user);
+        USER_REPOSITORY.add(user);
         user.setPassword("newPassword");
         USER_REPOSITORY.update(user);
         Optional<User> actualUserOptional = USER_REPOSITORY.findById(user.getId());
@@ -51,7 +51,7 @@ class UserRepositoryTest {
         User newUser = new User();
         newUser.setLogin("newUser1");
         newUser.setPassword("password1");
-        USER_REPOSITORY.create(newUser);
+        USER_REPOSITORY.add(newUser);
         int newUserId = newUser.getId();
         USER_REPOSITORY.delete(newUserId);
         Optional<User> actualUserOptional = USER_REPOSITORY.findById(newUserId);
@@ -81,7 +81,7 @@ class UserRepositoryTest {
         User newUser = new User();
         newUser.setLogin("newUser");
         newUser.setPassword("password");
-        USER_REPOSITORY.create(newUser);
+        USER_REPOSITORY.add(newUser);
         Optional<User> actualUserOptional = USER_REPOSITORY.findById(newUser.getId());
         User actualUser = actualUserOptional.orElse(null);
         assertThat(actualUser).isEqualTo(newUser);

@@ -1,15 +1,12 @@
 package ru.job4j.cars.repository;
 
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import ru.job4j.cars.model.Car;
+
+import java.util.Optional;
 
 /**
- * Oywayten 31.03.2023.
+ * Oywayten 17.05.2023.
  */
-@Repository
-@AllArgsConstructor
-public class CarRepository {
-
-    private final CrudRepository crudRepository;
-
+public interface CarRepository {
+    Optional<Car> add(Car car);
 }

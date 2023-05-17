@@ -1,15 +1,15 @@
 package ru.job4j.cars.repository;
 
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import ru.job4j.cars.model.Engine;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
- * Oywayten 31.03.2023.
+ * Oywayten 17.05.2023.
  */
-@Repository
-@AllArgsConstructor
-public class EngineRepository {
+public interface EngineRepository {
+    List<Engine> findAll();
 
-    private final CrudRepository crudRepository;
-
+    Optional<Engine> findById(int engineId);
 }

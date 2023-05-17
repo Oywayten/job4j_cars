@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,9 +21,20 @@ public class Car {
     @EqualsAndHashCode.Include
     private int id;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"), nullable = false)
+    @NotNull
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "model_id", foreignKey = @ForeignKey(name = "MODEL_ID_FK"), nullable = false)
+    @NotNull
+    private CarModel carModel;
+
+    @ManyToOne()
+    @JoinColumn(name = "body_type_id", foreignKey = @ForeignKey(name = "BODY_TYPE_ID_FK"), nullable = false)
+    @NotNull
+    private BodyType bodyType;
 
     @ManyToOne
     @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"), nullable = false)
