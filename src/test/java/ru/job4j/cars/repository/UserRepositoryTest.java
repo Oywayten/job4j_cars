@@ -62,13 +62,16 @@ class UserRepositoryTest {
     @Test
     public void whenFindAllOrderedByIdThenUser1User2User3() {
         User user1 = new User();
+        user1.setId(1);
         user1.setLogin("Ivanov");
         String password = "root";
         user1.setPassword(password);
         User user2 = new User();
         user2.setLogin("Petrov");
+        user2.setId(2);
         user2.setPassword(password);
         User user3 = new User();
+        user3.setId(3);
         user3.setLogin("Sidorov");
         user3.setPassword(password);
         List<User> expectedUsers = List.of(user1, user2, user3);
@@ -90,10 +93,12 @@ class UserRepositoryTest {
     @Test
     public void whenFindByLikeLoginIsPetrovAndSidirov() {
         User user1 = new User();
+        user1.setId(2);
         user1.setLogin("Petrov");
         String password = "root";
         user1.setPassword(password);
         User user2 = new User();
+        user2.setId(3);
         user2.setLogin("Sidorov");
         user2.setPassword(password);
         List<User> expectedUsers = List.of(user1, user2);

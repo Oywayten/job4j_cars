@@ -28,7 +28,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @NotBlank
     @Column(name = "user_zone", nullable = false)
     private String timezone;
 }
