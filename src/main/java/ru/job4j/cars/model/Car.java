@@ -22,7 +22,8 @@ public class Car {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"), nullable = false)
+    @JoinColumn(name = "category_id",
+            foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"), nullable = false)
     @NotNull
     private Category category;
 
@@ -32,12 +33,14 @@ public class Car {
     private CarModel carModel;
 
     @ManyToOne()
-    @JoinColumn(name = "body_type_id", foreignKey = @ForeignKey(name = "BODY_TYPE_ID_FK"), nullable = false)
+    @JoinColumn(name = "body_type_id",
+            foreignKey = @ForeignKey(name = "BODY_TYPE_ID_FK"), nullable = false)
     @NotNull
     private BodyType bodyType;
 
     @ManyToOne
-    @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"), nullable = false)
+    @JoinColumn(name = "engine_id",
+            foreignKey = @ForeignKey(name = "ENGINE_ID_FK"), nullable = false)
     @NotNull
     private Engine engine;
 

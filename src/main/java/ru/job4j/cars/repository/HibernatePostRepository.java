@@ -35,12 +35,14 @@ public class HibernatePostRepository implements PostRepository {
 
     @Override
     public List<Post> findAllWithPhoto() {
-        return crudRepository.query(FROM_POST_WHERE_PHOTO_IS_NOT_NULL_ORDER_BY_CREATED_ASC, Post.class);
+        return crudRepository.query(
+                FROM_POST_WHERE_PHOTO_IS_NOT_NULL_ORDER_BY_CREATED_ASC, Post.class);
     }
 
     @Override
     public List<Post> findAllByBrand(String brand) {
-        return crudRepository.query(FROM_POST_WHERE_CAR_MODEL_BRAND_IS, Post.class, Map.of("brand", brand));
+        return crudRepository.query(
+                FROM_POST_WHERE_CAR_MODEL_BRAND_IS, Post.class, Map.of("brand", brand));
     }
 
     @Override
@@ -59,6 +61,7 @@ public class HibernatePostRepository implements PostRepository {
     @Override
     public boolean setPostStatusSold(Long postId, int userId) {
         return crudRepository.run(
-                UPDATE_POST_SET_SOLD_TRUE_WHERE_POST_ID_AND_USER_ID_IS, Map.of("postId", postId, "userId", userId)) == 1;
+                UPDATE_POST_SET_SOLD_TRUE_WHERE_POST_ID_AND_USER_ID_IS,
+                Map.of("postId", postId, "userId", userId)) == 1;
     }
 }

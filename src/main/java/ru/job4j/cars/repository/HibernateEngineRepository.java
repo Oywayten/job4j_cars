@@ -32,7 +32,8 @@ public class HibernateEngineRepository implements EngineRepository {
     public Optional<Engine> findById(int engineId) {
         Optional<Engine> engineOptional = Optional.empty();
         try {
-            engineOptional = crudRepository.optional(FROM_ENGINE_WHERE_ID_IS, Engine.class, Map.of("engineId", engineId));
+            engineOptional = crudRepository.optional(
+                    FROM_ENGINE_WHERE_ID_IS, Engine.class, Map.of("engineId", engineId));
         } catch (HibernateException e) {
             log.error("Find engine by id error", e);
         }

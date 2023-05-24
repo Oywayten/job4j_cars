@@ -17,8 +17,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class UserRepositoryTest {
 
-    private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder().configure().build();
-    private static final SessionFactory SESSION_FACTORY = new MetadataSources(REGISTRY).buildMetadata().buildSessionFactory();
+    private static final StandardServiceRegistry REGISTRY =
+            new StandardServiceRegistryBuilder().configure().build();
+    private static final SessionFactory SESSION_FACTORY =
+            new MetadataSources(REGISTRY).buildMetadata().buildSessionFactory();
     private static final CrudRepository CRUD_REPOSITORY = new CrudRepository(SESSION_FACTORY);
     private static final UserRepository USER_REPOSITORY = new HybernateUserRepository(CRUD_REPOSITORY);
 

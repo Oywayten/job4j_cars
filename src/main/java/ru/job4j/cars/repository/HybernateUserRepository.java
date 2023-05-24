@@ -66,7 +66,8 @@ public class HybernateUserRepository implements UserRepository {
     public Optional<User> findById(int id) {
         Optional<User> userOptional = Optional.empty();
         try {
-            userOptional = crudRepository.optional(FROM_USER_WHERE_ID_IS, User.class, Map.of("id", id));
+            userOptional =
+                    crudRepository.optional(FROM_USER_WHERE_ID_IS, User.class, Map.of("id", id));
         } catch (HibernateException e) {
             log.error("Find user by id error", e);
         }
@@ -78,7 +79,8 @@ public class HybernateUserRepository implements UserRepository {
         List<User> users = new ArrayList<>();
         try {
             users = crudRepository.query(
-                    FROM_USER_WHERE_LOGIN_LIKE, User.class, Map.of("key", MessageFormat.format("%{0}%", key)));
+                    FROM_USER_WHERE_LOGIN_LIKE,
+                    User.class, Map.of("key", MessageFormat.format("%{0}%", key)));
         } catch (HibernateException e) {
             log.error("Find by like login error", e);
         }
@@ -89,7 +91,8 @@ public class HybernateUserRepository implements UserRepository {
     public Optional<User> findByLogin(String login) {
         Optional<User> userOptional = Optional.empty();
         try {
-            userOptional = crudRepository.optional(FROM_USER_WHERE_LOGIN_IS, User.class, Map.of("login", login));
+            userOptional = crudRepository.optional(
+                    FROM_USER_WHERE_LOGIN_IS, User.class, Map.of("login", login));
         } catch (HibernateException e) {
             log.error("Find user by login error", e);
         }
@@ -101,7 +104,8 @@ public class HybernateUserRepository implements UserRepository {
         Optional<User> userOptional = Optional.empty();
         try {
             userOptional = crudRepository.optional(
-                    FROM_USER_BY_LOGIN_AND_PASSWORD, User.class, Map.of("login", login, "password", password));
+                    FROM_USER_BY_LOGIN_AND_PASSWORD,
+                    User.class, Map.of("login", login, "password", password));
         } catch (Exception e) {
             log.error("Find user by login and password error", e);
         }

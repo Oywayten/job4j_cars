@@ -25,14 +25,16 @@ public class HibernateCarModelRepository implements CarModelRepository {
 
     @Override
     public List<CarModel> findAll() {
-        return crudRepository.query(FROM_CAR_MODEL_JOIN_FETCH_BRAND_ORDER_BY_CAR_MODEL_ASC_BRAND_ASC, CarModel.class);
+        return crudRepository.query(
+                FROM_CAR_MODEL_JOIN_FETCH_BRAND_ORDER_BY_CAR_MODEL_ASC_BRAND_ASC, CarModel.class);
     }
 
     @Override
     public Optional<CarModel> findById(int carModelId) {
         Optional<CarModel> carModelOptional = Optional.empty();
         try {
-            carModelOptional = crudRepository.optional(FROM_CAR_MODEL_WHERE_ID_IS, CarModel.class, Map.of("carModelId", carModelId));
+            carModelOptional = crudRepository.optional(
+                    FROM_CAR_MODEL_WHERE_ID_IS, CarModel.class, Map.of("carModelId", carModelId));
         } catch (HibernateException e) {
             log.error("Find car model by id error", e);
         }

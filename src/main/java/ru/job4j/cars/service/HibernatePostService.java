@@ -54,7 +54,8 @@ public class HibernatePostService implements PostService {
         return result;
     }
 
-    private static boolean isUserEqualsPostUser(Optional<User> optionalUser, Optional<Post> optionalPost) {
+    private static boolean isUserEqualsPostUser(
+            Optional<User> optionalUser, Optional<Post> optionalPost) {
         boolean result = false;
         if (optionalPost.isPresent() && optionalUser.isPresent()) {
             Post post = optionalPost.get();

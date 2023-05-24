@@ -22,7 +22,8 @@ public class HibernateFileService implements FileService {
 
     private final String storageDirectory;
 
-    public HibernateFileService(FileRepository fileRepository, @Value("${file.directory}") String storageDirectory) {
+    public HibernateFileService(FileRepository fileRepository,
+                                @Value("${file.directory}") String storageDirectory) {
         this.fileRepository = fileRepository;
         this.storageDirectory = storageDirectory;
     }

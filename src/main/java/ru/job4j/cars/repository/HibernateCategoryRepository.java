@@ -32,7 +32,8 @@ public class HibernateCategoryRepository implements CategoryRepository {
     public Optional<Category> findById(int categoryId) {
         Optional<Category> categoryOptional = Optional.empty();
         try {
-            categoryOptional = crudRepository.optional(FROM_CATEGORY_WHERE_ID_IS, Category.class, Map.of("categoryId", categoryId));
+            categoryOptional = crudRepository.optional(
+                    FROM_CATEGORY_WHERE_ID_IS, Category.class, Map.of("categoryId", categoryId));
         } catch (HibernateException e) {
             log.error("Find category by id error", e);
         }

@@ -32,7 +32,8 @@ public class HibernateBodyTypeRepository implements BodyTypeRepository {
     public Optional<BodyType> findById(int bodyTypeId) {
         Optional<BodyType> bodyTypeOptional = Optional.empty();
         try {
-            bodyTypeOptional = crudRepository.optional(FROM_BODY_TYPE_WHERE_ID_IS, BodyType.class, Map.of("bodyTypeId", bodyTypeId));
+            bodyTypeOptional = crudRepository.optional(
+                    FROM_BODY_TYPE_WHERE_ID_IS, BodyType.class, Map.of("bodyTypeId", bodyTypeId));
         } catch (HibernateException e) {
             log.error("Find body type by id error", e);
         }

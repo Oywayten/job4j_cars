@@ -72,7 +72,8 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public String create(Model model, @ModelAttribute PostForm postForm, @RequestParam MultipartFile multipartFile, HttpSession httpSession) {
+    public String create(Model model, @ModelAttribute PostForm postForm,
+                         @RequestParam MultipartFile multipartFile, HttpSession httpSession) {
         Post post = getPostByPostForm(postForm);
         if (multipartFile.getSize() > 0) {
             setFileToPost(multipartFile, post);
@@ -99,7 +100,8 @@ public class PostController {
     private Optional<File> getFileOptionalFromMultipartFile(MultipartFile multipartFile) {
         Optional<File> fileOptional;
         try {
-            FileDto fileDto = new FileDto(multipartFile.getOriginalFilename(), multipartFile.getBytes());
+            FileDto fileDto =
+                    new FileDto(multipartFile.getOriginalFilename(), multipartFile.getBytes());
             fileOptional = fileService.add(fileDto);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -129,12 +131,14 @@ public class PostController {
     }
 
     @PostMapping("/car-sold")
-    public String setPostStatusSold(@RequestParam Long postId, Model model, HttpSession httpSession, HttpServletRequest request) {
+    public String setPostStatusSold(@RequestParam Long postId, Model model, HttpSession httpSession,
+                                    HttpServletRequest request) {
         User user = getSessionUser(httpSession);
         boolean isNotSuccessSetSoldStatus = !postService.setPostStatusSold(postId, user.getId());
         if (isNotSuccessSetSoldStatus) {
             setSessionUserToModel(model, httpSession);
-            return goToError(model, String.format("Error set post's status sold for post with id = %d", postId));
+            return goToError(model,
+                    String.format("Error set post's status sold for post with id = %d", postId));
         }
         return refreshPage(request);
     }

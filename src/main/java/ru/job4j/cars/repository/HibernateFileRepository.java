@@ -35,7 +35,8 @@ public class HibernateFileRepository implements FileRepository {
     public Optional<File> findById(int id) {
         Optional<File> fileOptionall = Optional.empty();
         try {
-            fileOptionall = crudRepository.optional(FROM_FILE_WHERE_ID_IS, File.class, Map.of("id", id));
+            fileOptionall = crudRepository.optional(
+                    FROM_FILE_WHERE_ID_IS, File.class, Map.of("id", id));
         } catch (HibernateException e) {
             log.error("Find user by id error", e);
         }
